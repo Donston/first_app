@@ -1,0 +1,47 @@
+<% @page_title = 'Listing blog_posts' %>
+
+<%= content_tag('p', link_to('<< Back', :controller => 'staff', :action => 'menu')) %>
+
+  <div><%= pluralize(@blog_posts.size, 'blog_post') %> found</div>
+
+
+<table>
+	<tr class = "header">
+		
+		<th>Created</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Categories</th>
+		<th>Status</th>
+		<th>Comments</th>
+		<th>ID</th>
+	</tr>
+	<% @blog_posts.each do |blog_post| %>
+		<tr class="<% cycle('odd', 'even') %>">
+		<td><%= blog_post.created_at.strftime("%m/%d/%y %I:%m %p")  %></td>
+		<td><%= blog_post.title %></td>
+		<td><%= blog_post.author.display_name if blog_post.author %></td>
+		<td><%= blog_post.categories.collect {|cat| cat.name}.join(",") %></td>
+		<td><%= blog_post.status  %></td>
+		<td><%= blog_post.comments_count %></td>
+		<td><%= blog_post.id %></td>
+		
+		<td class="actions">
+		<%= link_to("Preview", {:action => 'show', :id => blog_post}) %>
+		<%= link_to("Edit", {:action => 'edit', :id => blog_post}, :class => 'action edit') %>
+		<%= link_to("Delete", {:action => "destroy", :id => blog_post.id}, :confirm => "Are you sure you want to permanently remove this post?", :method => :post) %>
+		</td>
+
+	
+	<% end %>
+  
+
+
+</table>
+
+<%#= link_to 'Previous page', { :page => @blog_post_pages.current.previous } if @blog_post_pages.current.previous %>
+<%#= link_to 'Next page', { :page => @blog_post_pages.current.next } if @blog_post_pages.current.next %> 
+
+<br />
+
+<%= link_to('New blog_post', {:action => 'new'}) %>

@@ -1,0 +1,49 @@
+<% @page_title = 'Categories' %>
+
+<%= content_tag('p', link_to('<< Back', :controller => 'staff', :action => 'menu')) %>
+
+  <div><%#= pluralize(@categories.size, 'category') %> found</div>
+
+
+<table>
+	<tr class = "header">
+		
+		<th>Name</th>
+		<th>Short Name</th>
+		<th>Description</th>
+		
+	</tr>
+	<% @categories.each do |category| %>
+		<tr class="<% cycle('odd', 'even') %>">
+		<td><%= category.name %></td>
+		<td><%= category.short_name %></td>
+		<td><%= category.description %></td>
+		
+		<td class="actions">
+		<%= link_to("Edit", {:action => 'list', :id => category.id}) %>
+		<%= link_to("Destroy", {:action => "destroy", :id => category}, :confirm => "Are you sure you want to permanently remove this post?", :method => :post) %>
+		</td>
+	<% end %>
+</table>
+
+
+<%= form_tag(params[:id].blank? ? {:action => 'create'} : {:action => 'update', :id => @category.id}) do %>
+  <table>
+    <tr>
+	  <th>Name</th>
+	  <th>Short name</th>
+	  <th>Description</th>
+	</tr>
+	<tr>
+		<td><%= text_field(:category, :name, :size => 20) %></td>
+		<td><%= text_field(:category, :short_name, :size => 20) %></td>
+		<td><%= text_field(:category, :description, :size => 60) %></td>
+	
+	  <div class="form-buttons">
+        <td><%= submit_tag(params[:id].blank? ? "Create" : "Edit") %></td>
+      </div>
+  </tr>
+  </table>
+  
+<% end %>
+

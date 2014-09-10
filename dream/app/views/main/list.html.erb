@@ -1,0 +1,9 @@
+<div id="left-column">
+  <div id="posts">
+    <%= render(:partial => 'shared/post', :collection => @posts)%>
+  </div>
+</div>
+
+<div id="right-column">
+  <%= render(:partial => 'custom/about')%>
+</div>

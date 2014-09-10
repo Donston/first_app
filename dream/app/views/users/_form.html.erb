@@ -1,0 +1,30 @@
+<table>
+  <tr>
+    <th>First Name</th>
+    <td><%= text_field(:user, :first_name, :size => 30, :style => "font-size: 1.1em;") %></td>
+  </tr>
+  <tr>
+    <th>Last Name</th>
+    <td><%= text_field(:user, :last_name, :size => 30, :style => "font-size: 1.1em;") %></td>
+  </tr>
+  <tr>
+    <th>Username</th>
+    <td><%= text_field(:user, :username, :size => 30, :style => "font-size: 1.1em;") %></td>
+  </tr>
+  <tr>
+    <th>Password</th>
+    <td><%= text_field(:user, :hashed_password, :size => 30, :style => "font-size: 1.1em;") %></td>
+  </tr>
+  <tr>
+    <th>Display Name</th>
+    <td><%= text_field(:user, :display_name, :size => 30, :style => "font-size: 1.1em;") %></td>
+  </tr>
+  <tr>
+    <th>Email</th>
+    <td><%= text_field(:user, :email, :size => 30, :style => "font-size: 1.1em;") %></td>
+  </tr>
+  <tr>
+    <th>User Level</th>
+    <td><%= select(:user, :user_level, (0..9).to_a.reverse) %></td>
+  </tr>
+</table>

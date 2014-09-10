@@ -1,0 +1,39 @@
+<p><%= link_to("Previous Page", :controller => "staff", :action => "menu") %></p>
+
+<table>
+  <tr class="header">
+    <th>Name</th>
+    <th>Short Name</th>
+    <th>Description</th>
+  </tr>
+  <% @categories.each do |cat| -%>
+    <tr class = "<%= cycle("row1", "row2") %>">
+      <td><%= cat.name %></td>
+      <td><%= cat.short_name %></td>
+      <td><%= cat.description %></td>
+    
+      <td class="action">
+        <%= link_to("Edit", {:action => 'list', :id => cat.id}) %>
+        <%= link_to("Delete", {:action => 'destroy', :id => cat.id}, :confirm => "Are you sure you want to permantely delete this category?", :method => :post) %>
+      </td>
+    </tr>
+  <% end %>   
+</table>
+
+<%= form_tag(params[:id].blank? ? {:action => 'create'} : {:action => 'update', :id => @category.id}) do -%>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Short Name</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td><%= text_field(:category, :name, :size => 20, :style => "font-weight: 1.1;") %></td>
+      <td><%= text_field(:category, :short_name, :size => 20, :style => "font-weight: 1.1;") %></td>
+      <td><%= text_field(:category, :description, :size => 60, :style => "font-weight: 1.1;") %></td>
+      <div class="form-bottuns">
+        <td><%= submit_tag(params[:id].blank? ? "Create" : "Edit") %></td>
+      </div>
+    </tr>
+  </table>
+<% end -%>

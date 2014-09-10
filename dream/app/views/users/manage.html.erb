@@ -1,0 +1,25 @@
+<p><%= link_to("<< Previous Page", {:controller => 'staff', :action => 'menu'}) %></p>
+
+<div class="userlist left">
+  <%= render(:partial => 'listing') %>
+</div>
+<div class="userlist right">
+  <% if params[:id].blank? -%>
+    <h1>New User</h1>
+    <%= form_tag(:action => 'manage') do -%>
+      <%= render(:partial => 'form')%>
+      <%= submit_tag("Create") %>
+    <% end -%>
+  <% else -%>
+    <h1>Edit User</h1>
+    <%= form_tag({:action => 'manage', :id => @user.id}) do -%>
+      <%= render(:partial => 'form') %>
+      <%= submit_tag("Edit") %>
+    <% end -%>
+    <%= form_tag({:action => 'manage', :id => @user.id}) do -%>
+      <%= submit_tag("Delete User") %>
+    <% end -%>
+    <br />
+  <% end -%>
+  <%= link_to("Cancel", :action => 'list') %>
+</div>

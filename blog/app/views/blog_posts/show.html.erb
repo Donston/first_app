@@ -1,0 +1,29 @@
+<%= link_to("<< Back to List", {:controller => 'blog_posts'}) %>
+
+<div class="subject show">
+  <h2>Show Blog Posts</h2>
+
+  <table summary="Subject detail view">
+    <tr>
+      <th>Title</th>
+      <td><%= @blog_post.title %></td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><%= @blog_post.content %></td>
+    </tr>
+    <tr>
+      <th>Status?</th>
+      <td><%= @blog_post.status ? 'true' : 'false' %></td>
+    </tr>
+    <tr>
+      <th>Created</th>
+      <td><%= @blog_post.created_at %></td>
+    </tr>
+    <tr>
+      <th>Updated</th>
+      <td><%= @blog_post.updated_at %></td>
+    </tr>
+  </table>
+  
+</div>

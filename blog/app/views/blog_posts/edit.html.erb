@@ -1,0 +1,22 @@
+<%# @page_title = "Edit Subject: #{@blog_post.title}" %>
+
+<% @page_title = "Editing Post:" %>
+
+<%#= "Test #{params[:id]}" %>
+<%#= "Test #{@blog_post.content}" %>
+
+<%= link_to('<< Back', {:action => 'list', :id => @blog_post.id}) %>
+
+<%= form_for(:blog_post, :url => {:action => 'update', :id => @blog_post.id}) do |f| %>
+
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+	
+	<div class = "form-buttons">
+	<%= submit_tag("Update Subject", :style => "margin: 1.5em 0 0 100px;") %>
+	</div>
+<% end -%>
+
+<%= link_to('Preview Post', {:controller => 'blog_posts', :action => 'show', :id => @blog_post.id}) %>
+
+
+

@@ -1,0 +1,10 @@
+<p><%= link_to("<< Previous Page", {:controller => 'staff', :action => 'menu'}) %></p>
+
+<div class="userlist left">
+  <%= render(:partial => 'listing') %>
+</div>
+
+<div class="userlist right">
+  Please select a user on the left or create a new user.
+  <%= link_to("New User", :action => 'manage') %>
+</div>

@@ -1,0 +1,19 @@
+
+<%= link_to("<< Back to Pages List", {:controller => "pages", :action => 'list', :subject_id => @subject_id}, :class => 'back-link') %>
+<%= params[:page_id] %>
+
+<div class="page new">
+  <h2>Create Page</h2>
+
+  <%= form_for(:page, :url => {:action => 'create', :page_id => @page_id, :subject_id => @subject_id}) do |f| %>
+  
+    <table summary="Page form fields">
+      <tr>
+     <%= render(:partial => "form", :locals => {:f => f})%> 
+    
+    <div class="form-buttons">
+      <%= submit_tag("Create Page") %>
+    </div>
+    
+  <% end %>
+</div>

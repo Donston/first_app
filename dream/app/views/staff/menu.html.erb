@@ -1,0 +1,9 @@
+<% @page_title = 'Staff Menu' %>
+
+<ul class = "menu">
+  <li><%= link_to("Manage Posts", :controller => "posts") %></li>
+  <li><%= link_to("Manage Categories", :controller => "Categories") %></li>
+  <li><%= link_to("Manage Comments", :controller => "comments") %></li>
+  <li><%= link_to("Manage Users", :controller => "Users") %></li>
+  <li><%= link_to("Logout", :action => "logout") %></li>
+</ul>

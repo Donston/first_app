@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+			 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Simple Blog: <%= @page_title ||= 'Main Page' %></title>
+		<meta name="author" content="John De Leon, Phoenix Rising, Inc." />
+		<meta name="copyright" content="Copyright 2014, Phoenix Rising, Inc." />
+		<meta name="version" content="1.0" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		
+		<%#= stylesheet_link_tag('staff', :media => "all") %>
+		<%= stylesheet_link_tag('sblog', 'main', :media => "all") %>
+		
+	</head>
+	<body class="main">
+		<div id="header">
+			<h1>Simple Blog: Main Page</h1>
+		</div>
+		<div id="pagecontent">
+			<h1><%= @page_title %></h1>
+			<%= "<div class=\"notice\">#{flash[:notice]}</div>" if flash[:notice] %>
+			<%= yield %>
+		</div>
+		<div id="footer">
+			<p>Copyright John De Leon Inc.</p>
+		</div>
+	</body>
+</html>

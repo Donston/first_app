@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <th><%= f.label(:title) %> </th>
+    <td><%= f.text_field(:title, :size => 20, :style => "font-weight: 1.3em;") %></td>
+    
+    <td rowspan="2">
+      <div class="categorylist">
+        <% @all_categories.each do |cat| -%>
+          <%= check_box_tag('category[]', cat.id, @post.categories.map {|c| c.id}.include?(cat.id)) %>
+          <%= cat.name%>
+        <% end -%>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th><%= f.label(:content) %></th>
+    <td><%= f.text_area(:content, :cols => 70, :rows => 20, :style => "font-weight: 1.1em;") %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:author_id) %></th>
+    <td><%= f.select(:author_id, @user_list) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:status) %></th>
+    <td><%= f.select(:status, ["draft", "published"]) %></td>
+  </tr>
+  <tr>
+    <th><%= f.label(:created_at) %></th>
+    <td><%= f.datetime_select(:created_at, :order => [:month, :day, :year], :start_year => 2007, :end_year => Time.now.next_year.year) %></td>>
+  </tr>
+  
+</table>

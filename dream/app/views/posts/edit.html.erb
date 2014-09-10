@@ -1,0 +1,13 @@
+<%= link_to("<< Previous Page", :action => "list") %>
+
+<div class="edit post">
+  <h2>Edit Post</h2>
+  <%= form_for(:post, :url => {:action => "update", :id => @post.id}) do |f| -%>
+    <%= render(:partial => "form", :locals => {:f => f}) %>
+    <div class="form-buttons">
+      <%= submit_tag("Edit Post", :styles => "margin: 1.5em 0 0 100px") %>
+    </div>
+  <% end -%>
+  
+  <%= link_to("Preview Post", {:action => "show", :id => @post.id})%>
+</div>
